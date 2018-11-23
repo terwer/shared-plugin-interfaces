@@ -9,6 +9,20 @@ Share plugin interface for bugucms plugin system
 
 #### 安装教程
 
+1. 构建jar包
+
+```
+mvn package -DskipTests
+```
+
+2. 安装到本地maven库
+
+```
+mvn install:install-file -Dfile=target/shared-plugin-interfaces-1.0.0.jar -DgroupId=com.terwergreen -DartifactId=shared-plugin-interfaces -Dversion=1.0.0 -Dpackaging=jar
+```
+
+#### 使用说明
+
 1. 在项目pom.xml中添加下面代码
 
 ```xml
@@ -18,16 +32,6 @@ Share plugin interface for bugucms plugin system
     <version>1.0.0</version>
 </dependency>
 ```
-
-2. 安装到本地maven库
-
-```
-mvn install:install-file -Dfile=target/shared-plugin-interfaces-1.0.0.jar -DgroupId=com.curisprofound -DartifactId=shared-plugin-interfaces -Dversion=1.0.0 -Dpackaging=jar
-```
-
-#### 使用说明
-
-1. 在pom.xml添加引用即可
 
 #### 参与贡献
 
