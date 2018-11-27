@@ -24,11 +24,4 @@ public interface PluginInterface extends ExtensionPoint {
      * @return
      */
     List<?> reactiveRoutes();
-
-    /**
-     * webServlet映射列表
-     *
-     * @return
-     */
-    List<Object> mvcControllers();
 }
