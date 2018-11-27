@@ -24,22 +24,22 @@ public class BugucmsPlugin extends SpringPlugin {
 
     @Override
     protected ApplicationContext createApplicationContext() {
-        logger.info("BugucmsPlugin.createApplicationContext()");
+        logger.info("Creating BugucmsPlugin applicationContext");
         SpringPluginManager springPluginManager = (SpringPluginManager) (this.getWrapper().getPluginManager());
         ApplicationContext applicationContext = springPluginManager.getApplicationContext();
-        logger.info("BugucmsPlugin.applicationContext=" + applicationContext);
+        logger.info("BugucmsPlugin applicationContext is:" + applicationContext);
         return applicationContext;
     }
 
     @Override
     public void start() throws PluginException {
-        logger.info("BugucmsPlugin.start()");
         super.start();
+        logger.debug("BugucmsPlugin started");
     }
 
     @Override
     public void stop() {
-        logger.info("BugucmsPlugin.stop()");
         super.stop();
+        logger.info("BugucmsPlugin stoped");
     }
 }
