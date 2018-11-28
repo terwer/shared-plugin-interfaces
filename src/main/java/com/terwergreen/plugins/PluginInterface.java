@@ -3,6 +3,7 @@ package com.terwergreen.plugins;
 import org.pf4j.ExtensionPoint;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author Terwer
@@ -24,4 +25,11 @@ public interface PluginInterface extends ExtensionPoint {
      * @return
      */
     List<?> reactiveRoutes();
+
+    /**
+     * 暴露给外部使用的数据
+     *
+     * @return
+     */
+    Map data();
 }
