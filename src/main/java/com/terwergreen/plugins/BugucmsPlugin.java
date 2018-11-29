@@ -17,8 +17,9 @@ import static org.springframework.beans.factory.config.AutowireCapableBeanFactor
  * @Version 1.0
  * @Description 公共插件基类
  **/
-public  class BugucmsPlugin extends SpringPlugin {
+public class BugucmsPlugin extends SpringPlugin {
     private static final Logger logger = LoggerFactory.getLogger(BugucmsPlugin.class);
+    private ApplicationContext applicationContext;
 
     public BugucmsPlugin(PluginWrapper wrapper) {
         super(wrapper);
@@ -26,32 +27,43 @@ public  class BugucmsPlugin extends SpringPlugin {
 
     /**
      * 公共获取上下文方法
+     *
      * @return
      */
     public ApplicationContext getBugucmsApplicationContext() {
-        return super.getApplicationContext();
+        if (this.applicationContext == null) {
+            this.applicationContext = createApplicationContext();
+        }
+        return this.applicationContext;
     }
 
     /**
      * 公共的注册bean方法
      *
-     * @param obj
+     * @param beanClass
      */
-    public void registerBean(Object obj) {
+    public void registerBean(Class<?> beanClass) {
         ApplicationContext applicationContext = this.getBugucmsApplicationContext();
         if (null != applicationContext) {
             AutowireCapableBeanFactory beanFactory = applicationContext.getAutowireCapableBeanFactory();
             if (null != beanFactory) {
-                beanFactory.autowire(Object.class, AUTOWIRE_BY_TYPE, true);
-                logger.info("BugucmsPlugin autowire Bean " + Object.class + " in container " + applicationContext);
+                beanFactory.autowire(beanClass, AUTOWIRE_BY_TYPE, true);
+                logger.info("BugucmsPlugin autowire Bean " + beanClass + " in container " + applicationContext);
             }
         }
     }
 
+    /**
+     * 注册插件依赖的对象
+     */
+    public void registerPluginBeans() {
+    }
+
     @Override
     protected ApplicationContext createApplicationContext() {
-        ApplicationContext applicationContext = ((SpringPluginManager) (this.getWrapper().getPluginManager())).getApplicationContext();
+        applicationContext = ((SpringPluginManager) (this.getWrapper().getPluginManager())).getApplicationContext();
         logger.info("Creating applicationContext in BugucmsPlugin:" + applicationContext);
+        registerPluginBeans();
         return applicationContext;
     }
 

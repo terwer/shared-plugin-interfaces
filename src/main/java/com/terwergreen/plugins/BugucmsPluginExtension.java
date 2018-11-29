@@ -31,23 +31,32 @@ public abstract class BugucmsPluginExtension {
     /**
      * 公共的注册bean方法
      *
-     * @param obj
+     * @param beanClass
      */
-    public void registerBean(Object obj) {
+    public void registerBean(Class<?> beanClass) {
         ApplicationContext applicationContext = this.applicationContext;
         if (null != applicationContext) {
             AutowireCapableBeanFactory beanFactory = applicationContext.getAutowireCapableBeanFactory();
             if (null != beanFactory) {
-                beanFactory.autowire(Object.class, AUTOWIRE_BY_TYPE, true);
-                logger.info("BugucmsPluginExtension autowire Bean " + Object.class + " in container " + applicationContext);
+                beanFactory.autowire(beanClass, AUTOWIRE_BY_TYPE, true);
+                logger.info("BugucmsPluginExtension autowire Bean " + beanClass + " in container " + applicationContext);
             }
         }
     }
+
+    /**
+     * 注册插件依赖的对象
+     */
+    public abstract void registerPluginBeans();
 
     /**
      * 设置扩展点上下文
      *
      * @param applicationContext
      */
-    public abstract void createApplicationContext(ApplicationContext applicationContext);
+    public void createApplicationContext(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+        logger.info("Set applicationContext in BugucmsPluginExtension:" + applicationContext);
+        registerPluginBeans();
+    }
 }
