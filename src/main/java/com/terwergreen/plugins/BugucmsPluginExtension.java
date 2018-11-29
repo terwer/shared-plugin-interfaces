@@ -4,7 +4,7 @@ import org.pf4j.Extension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigRegistry;
+import org.springframework.context.support.GenericApplicationContext;
 
 /**
  * @Author Terwer
@@ -32,9 +32,9 @@ public abstract class BugucmsPluginExtension {
      * @param beanClass
      */
     public void registerBean(Class<?> beanClass) {
-        AnnotationConfigRegistry applicationContext = (AnnotationConfigRegistry) getBugucmsApplicationContext();
+        GenericApplicationContext applicationContext = (GenericApplicationContext) getBugucmsApplicationContext();
         if (null != applicationContext) {
-            applicationContext.register(beanClass);
+            applicationContext.registerBean(beanClass);
             logger.info("BugucmsPluginExtension register " + beanClass + " in container " + applicationContext);
         }
     }
