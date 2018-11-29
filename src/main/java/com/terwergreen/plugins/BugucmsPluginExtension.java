@@ -3,10 +3,8 @@ package com.terwergreen.plugins;
 import org.pf4j.Extension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
-
-import static org.springframework.beans.factory.config.AutowireCapableBeanFactory.AUTOWIRE_BY_TYPE;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
  * @Author Terwer
@@ -34,20 +32,12 @@ public abstract class BugucmsPluginExtension {
      * @param beanClass
      */
     public void registerBean(Class<?> beanClass) {
-        ApplicationContext applicationContext = this.applicationContext;
+        AnnotationConfigApplicationContext applicationContext = (AnnotationConfigApplicationContext) getBugucmsApplicationContext();
         if (null != applicationContext) {
-            AutowireCapableBeanFactory beanFactory = applicationContext.getAutowireCapableBeanFactory();
-            if (null != beanFactory) {
-                beanFactory.autowire(beanClass, AUTOWIRE_BY_TYPE, true);
-                logger.info("BugucmsPluginExtension autowire Bean " + beanClass + " in container " + applicationContext);
-            }
+            applicationContext.register(beanClass);
+            logger.info("BugucmsPluginExtension register " + beanClass + " in container " + applicationContext);
         }
     }
-
-    /**
-     * 注册插件依赖的对象
-     */
-    public abstract void registerPluginBeans();
 
     /**
      * 设置扩展点上下文
@@ -57,6 +47,5 @@ public abstract class BugucmsPluginExtension {
     public void createApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
         logger.info("Set applicationContext in BugucmsPluginExtension:" + applicationContext);
-        registerPluginBeans();
     }
 }

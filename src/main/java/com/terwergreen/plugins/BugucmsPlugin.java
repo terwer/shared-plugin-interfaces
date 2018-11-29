@@ -6,10 +6,9 @@ import org.pf4j.spring.SpringPlugin;
 import org.pf4j.spring.SpringPluginManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.config.AutowireCapableBeanFactory;
 import org.springframework.context.ApplicationContext;
-
-import static org.springframework.beans.factory.config.AutowireCapableBeanFactory.AUTOWIRE_BY_TYPE;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.GenericApplicationContext;
 
 /**
  * @Author Terwer
@@ -30,11 +29,11 @@ public class BugucmsPlugin extends SpringPlugin {
      *
      * @return
      */
-    public ApplicationContext getBugucmsApplicationContext() {
+    public GenericApplicationContext getBugucmsApplicationContext() {
         if (this.applicationContext == null) {
             this.applicationContext = createApplicationContext();
         }
-        return this.applicationContext;
+        return (GenericApplicationContext) this.applicationContext;
     }
 
     /**
@@ -43,27 +42,18 @@ public class BugucmsPlugin extends SpringPlugin {
      * @param beanClass
      */
     public void registerBean(Class<?> beanClass) {
-        ApplicationContext applicationContext = this.getBugucmsApplicationContext();
+        AnnotationConfigApplicationContext applicationContext = (AnnotationConfigApplicationContext) getBugucmsApplicationContext();
         if (null != applicationContext) {
-            AutowireCapableBeanFactory beanFactory = applicationContext.getAutowireCapableBeanFactory();
-            if (null != beanFactory) {
-                beanFactory.autowire(beanClass, AUTOWIRE_BY_TYPE, true);
-                logger.info("BugucmsPlugin autowire Bean " + beanClass + " in container " + applicationContext);
-            }
+            // 注册插件依赖
+            applicationContext.register(beanClass);
+            logger.info("BugucmsPlugin register " + beanClass + " in container " + applicationContext);
         }
-    }
-
-    /**
-     * 注册插件依赖的对象
-     */
-    public void registerPluginBeans() {
     }
 
     @Override
     protected ApplicationContext createApplicationContext() {
         applicationContext = ((SpringPluginManager) (this.getWrapper().getPluginManager())).getApplicationContext();
         logger.info("Creating applicationContext in BugucmsPlugin:" + applicationContext);
-        registerPluginBeans();
         return applicationContext;
     }
 
