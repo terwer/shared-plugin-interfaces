@@ -18,7 +18,7 @@ mvn package -DskipTests
 2. 安装到本地maven库
 
 ```
-mvn install:install-file -Dfile=target/shared-plugin-interfaces-3.0.0.jar -DgroupId=com.terwergreen -DartifactId=shared-plugin-interfaces -Dversion=3.0.0 -Dpackaging=jar
+mvn install:install-file -Dfile=target/shared-plugin-interfaces-3.0.1.jar -DgroupId=com.terwergreen -DartifactId=shared-plugin-interfaces -Dversion=3.0.1 -Dpackaging=jar
 ```
 
 #### 使用说明
@@ -29,7 +29,7 @@ mvn install:install-file -Dfile=target/shared-plugin-interfaces-3.0.0.jar -Dgrou
 <dependency>
     <groupId>com.terwergreen</groupId>
     <artifactId>shared-plugin-interfaces</artifactId>
-    <version>3.0.0</version>
+    <version>3.0.1</version>
 </dependency>
 ```
 
