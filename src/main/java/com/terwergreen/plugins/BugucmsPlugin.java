@@ -7,8 +7,7 @@ import org.pf4j.spring.SpringPluginManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.GenericApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigRegistry;
 
 /**
  * @Author Terwer
@@ -29,11 +28,11 @@ public class BugucmsPlugin extends SpringPlugin {
      *
      * @return
      */
-    public GenericApplicationContext getBugucmsApplicationContext() {
+    public ApplicationContext getBugucmsApplicationContext() {
         if (this.applicationContext == null) {
             this.applicationContext = createApplicationContext();
         }
-        return (GenericApplicationContext) this.applicationContext;
+        return this.applicationContext;
     }
 
     /**
@@ -42,7 +41,7 @@ public class BugucmsPlugin extends SpringPlugin {
      * @param beanClass
      */
     public void registerBean(Class<?> beanClass) {
-        AnnotationConfigApplicationContext applicationContext = (AnnotationConfigApplicationContext) getBugucmsApplicationContext();
+        AnnotationConfigRegistry applicationContext = (AnnotationConfigRegistry) getBugucmsApplicationContext();
         if (null != applicationContext) {
             // 注册插件依赖
             applicationContext.register(beanClass);
