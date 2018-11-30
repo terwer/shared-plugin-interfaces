@@ -18,9 +18,6 @@ public abstract class BugucmsPluginExtension implements ExtensionPoint {
     private static final Logger logger = LoggerFactory.getLogger(BugucmsPluginExtension.class);
     private GenericApplicationContext applicationContext;
 
-    public BugucmsPluginExtension(){
-    }
-
     public BugucmsPluginExtension(GenericApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
         logger.info("Set applicationContext in BugucmsPluginExtension:" + applicationContext);
