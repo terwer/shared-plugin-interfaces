@@ -17,10 +17,12 @@ import org.springframework.context.support.GenericApplicationContext;
  **/
 public class BugucmsPlugin extends SpringPlugin {
     private static final Logger logger = LoggerFactory.getLogger(BugucmsPlugin.class);
-    private ApplicationContext applicationContext;
+    private GenericApplicationContext applicationContext;
 
     public BugucmsPlugin(PluginWrapper wrapper) {
         super(wrapper);
+        this.applicationContext = (GenericApplicationContext) createApplicationContext();
+        logger.info("Set applicationContext in BugucmsPlugin:" + applicationContext);
     }
 
     /**
@@ -28,10 +30,7 @@ public class BugucmsPlugin extends SpringPlugin {
      *
      * @return
      */
-    public ApplicationContext getBugucmsApplicationContext() {
-        if (this.applicationContext == null) {
-            this.applicationContext = createApplicationContext();
-        }
+    public GenericApplicationContext getBugucmsApplicationContext() {
         return this.applicationContext;
     }
 
@@ -41,17 +40,16 @@ public class BugucmsPlugin extends SpringPlugin {
      * @param beanClass
      */
     public void registerBean(Class<?> beanClass) {
-        GenericApplicationContext applicationContext = (GenericApplicationContext) getBugucmsApplicationContext();
-        if (null != applicationContext) {
+        if (null != this.applicationContext) {
             // 注册插件依赖
-            applicationContext.registerBean(beanClass);
-            logger.info("BugucmsPlugin register " + beanClass + " in container " + applicationContext);
+            this.applicationContext.registerBean(beanClass);
+            logger.info("BugucmsPlugin register " + beanClass + " in container " + this.applicationContext);
         }
     }
 
     @Override
     protected ApplicationContext createApplicationContext() {
-        applicationContext = ((SpringPluginManager) (this.getWrapper().getPluginManager())).getApplicationContext();
+        ApplicationContext applicationContext = ((SpringPluginManager) (this.getWrapper().getPluginManager())).getApplicationContext();
         logger.info("Creating applicationContext in BugucmsPlugin:" + applicationContext);
         return applicationContext;
     }
