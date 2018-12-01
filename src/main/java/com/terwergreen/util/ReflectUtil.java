@@ -136,6 +136,7 @@ public class ReflectUtil {
         Class<?> clazz = obj.getClass();
         try {
             Field field = clazz.getDeclaredField(fieldName);
+            field.setAccessible(true);//为true则表示反射的对象在使用时取消Java语言访问检查
             return field.get(obj);
         } catch (NoSuchFieldException e) {
             logger.error("Class " + obj + " get field" + fieldName + " fail", e);
@@ -156,6 +157,7 @@ public class ReflectUtil {
         Class<?> clazz = obj.getClass();
         try {
             Field field = clazz.getDeclaredField(fieldName);
+            field.setAccessible(true);//为true则表示反射的对象在使用时取消Java语言访问检查
             field.set(obj, value);
         } catch (NoSuchFieldException e) {
             logger.error("Class " + obj + " set field" + fieldName + " fail", e);
