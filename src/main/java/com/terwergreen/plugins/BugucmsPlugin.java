@@ -25,8 +25,10 @@ public class BugucmsPlugin extends SpringPlugin {
     @Override
     protected ApplicationContext createApplicationContext() {
         logger.debug("Creating BugucmsPlugin applicationContext");
-        SpringPluginManager pluginManager = (SpringPluginManager) (this.getWrapper().getPluginManager());
-        return pluginManager.getApplicationContext();
+        SpringPluginManager springPluginManager = (SpringPluginManager) (this.getWrapper().getPluginManager());
+        ApplicationContext applicationContext = springPluginManager.getApplicationContext();
+        logger.debug("BugucmsPlugin applicationContext is:" + applicationContext);
+        return applicationContext;
     }
 
     @Override
