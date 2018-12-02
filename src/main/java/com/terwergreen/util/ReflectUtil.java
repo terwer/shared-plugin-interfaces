@@ -1,7 +1,7 @@
 package com.terwergreen.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
@@ -17,7 +17,7 @@ import java.util.List;
  * @Description 反射工具类
  **/
 public class ReflectUtil {
-    private static final Logger logger = LoggerFactory.getLogger(ReflectUtil.class);
+    private static final Log logger = LogFactory.getLog(ReflectUtil.class);
 
     /**
      * 判断对象是否实现接口或者继承了某个类，只支持继承自一级的情况，即B extends A或者B implements A的情况
