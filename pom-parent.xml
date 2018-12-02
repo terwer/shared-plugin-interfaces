@@ -7,7 +7,7 @@
     <groupId>com.terwergreen</groupId>
     <artifactId>shared-plugin-interfaces</artifactId>
     <version>4.1.1</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <dependencies>
         <!-- shared-plugin-interfaces -->
