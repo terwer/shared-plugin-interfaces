@@ -26,7 +26,7 @@ mvn install:install-file -Dfile=target/shared-plugin-interfaces-4.1.1.jar -Dgrou
 ## 当做parent引用的pom.xml
 
 ```
-mvn install:install-file -Dfile=pom-parent.xml -DgroupId=com.terwergreen -DartifactId=shared-plugin-interfaces -Dversion=4.1.1 -Dpackaging=pom
+mvn install:install-file -Dfile=pom.xml -DgroupId=com.terwergreen -DartifactId=shared-plugin-interfaces -Dversion=4.1.1 -Dpackaging=pom
 ```
 
 #### 使用说明
