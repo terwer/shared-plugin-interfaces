@@ -15,8 +15,8 @@ import org.apache.commons.logging.LogFactory;
  * @Version 1.0
  * @Description 读取属性的公共方法
  **/
-public class PropertyUtils {
-    private static final Log logger = LogFactory.getLog(PropertyUtils.class);
+public class PropertyUtil {
+    private static final Log logger = LogFactory.getLog(PropertyUtil.class);
 
     /**
      * 根据文件名读取属性
@@ -24,7 +24,7 @@ public class PropertyUtils {
      * @param propertyFileName
      * @return
      */
-    private static Configuration readConfig(String propertyFileName) {
+    public static Configuration readConfig(String propertyFileName) {
         Parameters params = new Parameters();
         FileBasedConfigurationBuilder<FileBasedConfiguration> builder =
                 new FileBasedConfigurationBuilder<FileBasedConfiguration>(PropertiesConfiguration.class)
@@ -46,7 +46,7 @@ public class PropertyUtils {
      * @param key
      * @return
      */
-    private static String readProperty(String key) {
+    public static String readProperty(String key) {
         Configuration config = readConfig("application.properties");
         String acrive = config.getString("spring.profiles.active");
         if (acrive.equals("dev")) {

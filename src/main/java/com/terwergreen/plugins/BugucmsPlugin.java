@@ -1,6 +1,6 @@
 package com.terwergreen.plugins;
 
-import com.terwergreen.util.PropertyUtils;
+import com.terwergreen.util.PropertyUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.pf4j.PluginException;
@@ -16,7 +16,7 @@ import org.springframework.context.ApplicationContext;
  * @Description 公共插件基类
  **/
 public class BugucmsPlugin extends SpringPlugin {
-    private static final Log logger = LogFactory.getLog(PropertyUtils.class);
+    private static final Log logger = LogFactory.getLog(PropertyUtil.class);
 
     public BugucmsPlugin(PluginWrapper wrapper) {
         super(wrapper);
