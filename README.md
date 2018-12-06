@@ -12,7 +12,7 @@ Share plugin interface for bugucms plugin system
 1. 构建jar包
 
 ```
-mvn package -DskipTests
+mvn clean package -DskipTests
 ```
 
 2. 安装到本地maven库
