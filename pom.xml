@@ -6,7 +6,7 @@
 
     <groupId>com.terwergreen</groupId>
     <artifactId>shared-plugin-interfaces</artifactId>
-    <version>4.1.9</version>
+    <version>4.1.10</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -15,7 +15,7 @@
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
         <java.version>1.8</java.version>
         <!-- 公共插件版本 -->
-        <bugucms.interface.version>4.1.9</bugucms.interface.version>
+        <bugucms.interface.version>4.1.10</bugucms.interface.version>
         <!-- springboot版本 -->
         <bugucms.springboot.version>2.0.0.RELEASE</bugucms.springboot.version>
         <!-- pf4j版本-->
@@ -66,7 +66,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.4</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
