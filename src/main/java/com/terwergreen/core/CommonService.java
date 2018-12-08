@@ -1,5 +1,7 @@
 package com.terwergreen.core;
 
+import com.terwergreen.pojo.SiteConfig;
+
 /**
  * @Author Terwer
  * @Date 2018/11/26 15:12
@@ -8,12 +10,19 @@ package com.terwergreen.core;
  **/
 public interface CommonService {
     /**
+     * 获取站点配置
+     *
+     * @return
+     */
+    SiteConfig getSiteConfig();
+
+    /**
      * 获取站点配置项
      *
      * @param optionName 配置名
      * @return
      */
-    Object getSiteConfig(String optionName);
+    Object getSiteConfigItem(String optionName);
 
     /**
      * 获取属性
@@ -27,10 +36,10 @@ public interface CommonService {
      * 更新单个站点配置项
      *
      * @param optionName  配置名
-     * @param optionValue 配置值
+     * @param newOptionValue 配置值
      * @return
      */
-    Integer updateSiteConfig(String optionName, String optionValue);
+    boolean updateSiteConfig(String optionName, String newOptionValue);
 
     /**
      * 更新属性
@@ -39,5 +48,5 @@ public interface CommonService {
      * @param optionGroup 配置值
      * @return
      */
-    Integer updateOption(String optionName, String optionValue, String optionGroup);
+    boolean updateOption(String optionName, String optionValue, String optionGroup);
 }
