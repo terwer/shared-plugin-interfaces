@@ -1,7 +1,5 @@
 package com.terwergreen.util;
 
-import org.apache.commons.lang3.StringUtils;
-
 /**
  * @author terwergreen
  * 接口返回数据模型DTO
@@ -11,7 +9,7 @@ public class RestResponse {
     /**
      * 状态码（数字节点），包括通用状态码及业务状态
      */
-    private String flag;
+    private Integer flag;
 
     /**
      * 消息
@@ -24,44 +22,39 @@ public class RestResponse {
     private Object data;
 
     public RestResponse() {
-        super();
     }
 
-    public RestResponse(String flag) {
-        super();
+    public RestResponse(Integer flag) {
         this.flag = flag;
     }
 
-    public RestResponse(String flag, String msg) {
-        super();
+    public RestResponse(Integer flag, String msg) {
         this.flag = flag;
         this.msg = msg;
     }
 
-    public RestResponse(String flag, String msg, Object data) {
-        super();
+    public RestResponse(Integer flag, String msg, Object data) {
         this.flag = flag;
         this.msg = msg;
         this.data = data;
     }
 
     public RestResponse(RestResponse dto) {
-        super();
-        if(null==dto|| StringUtils.isEmpty(dto.getFlag())){
+        if (null == dto || null == dto.getFlag()) {
             this.flag = RestResponseStates.SUCCESS.getValue();
             this.msg = RestResponseStates.SUCCESS.getMsg();
-        }else{
+        } else {
             this.flag = dto.getFlag();
-            this.msg = dto.getFlag();
+            this.msg = dto.getMsg();
             this.data = dto.getData();
         }
     }
 
-    public String getFlag() {
+    public Integer getFlag() {
         return flag;
     }
 
-    public void setFlag(String flag) {
+    public void setFlag(Integer flag) {
         this.flag = flag;
     }
 
