@@ -9,7 +9,7 @@ public class RestResponse {
     /**
      * 状态码（数字节点），包括通用状态码及业务状态
      */
-    private Integer flag;
+    private Integer status;
 
     /**
      * 消息
@@ -24,38 +24,38 @@ public class RestResponse {
     public RestResponse() {
     }
 
-    public RestResponse(Integer flag) {
-        this.flag = flag;
+    public RestResponse(Integer status) {
+        this.status = status;
     }
 
-    public RestResponse(Integer flag, String msg) {
-        this.flag = flag;
+    public RestResponse(Integer status, String msg) {
+        this.status = status;
         this.msg = msg;
     }
 
-    public RestResponse(Integer flag, String msg, Object data) {
-        this.flag = flag;
+    public RestResponse(Integer status, String msg, Object data) {
+        this.status = status;
         this.msg = msg;
         this.data = data;
     }
 
     public RestResponse(RestResponse dto) {
-        if (null == dto || null == dto.getFlag()) {
-            this.flag = RestResponseStates.SUCCESS.getValue();
+        if (null == dto || null == dto.getStatus()) {
+            this.status = RestResponseStates.SUCCESS.getValue();
             this.msg = RestResponseStates.SUCCESS.getMsg();
         } else {
-            this.flag = dto.getFlag();
+            this.status = dto.getStatus();
             this.msg = dto.getMsg();
             this.data = dto.getData();
         }
     }
 
-    public Integer getFlag() {
-        return flag;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setFlag(Integer flag) {
-        this.flag = flag;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public String getMsg() {
