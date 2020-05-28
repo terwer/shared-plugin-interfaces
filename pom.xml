@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
-        <java.version>1.7</java.version>
+        <java.version>1.8</java.version>
         <!-- 公共插件版本 -->
         <bugucms.interface.version>4.1.13</bugucms.interface.version>
         <!-- springboot版本 -->
@@ -77,15 +77,14 @@
     </dependencies>
 
     <build>
-        <finalName>shared-plugin-interfaces</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>

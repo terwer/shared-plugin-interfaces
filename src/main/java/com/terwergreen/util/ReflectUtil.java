@@ -28,11 +28,11 @@ public class ReflectUtil {
      */
     public static boolean instanceOf(Class<?> clazz1, Class<?> clazz2) {
         // 比较自己类型
-        if (clazz1.getName().equals(clazz2.getName())) {
+        if (clazz1.getTypeName().equals(clazz2.getTypeName())) {
             return true;
         }
         // 比较自己和父类的类型
-        return clazz1.getSuperclass().getName().equals(clazz2.getName());
+        return clazz1.getSuperclass().getTypeName().equals(clazz2.getTypeName());
     }
 
     /**
