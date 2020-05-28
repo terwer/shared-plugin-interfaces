@@ -20,7 +20,7 @@ mvn clean package -DskipTests
 ## jar包
 
 ```
-mvn install:install-file -Dfile=target/shared-plugin-interfaces.jar -DgroupId=com.terwergreen -DartifactId=shared-plugin-interfaces -Dversion=4.1.13 -Dpackaging=jar
+mvn install:install-file -Dfile=target/shared-plugin-interfaces-4.1.13.jar -DgroupId=com.terwergreen -DartifactId=shared-plugin-interfaces -Dversion=4.1.13 -Dpackaging=jar
 ```
 
 ## 当做parent引用的pom.xml
