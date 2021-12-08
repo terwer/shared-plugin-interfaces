@@ -1,7 +1,7 @@
 echo 'current workspace:'
 dir
 
-call ./mvnw clean package -DskipTests
+call ./mvnw.cmd clean package -DskipTests
 echo build success
 
 call ./mvnw.cmd -version
