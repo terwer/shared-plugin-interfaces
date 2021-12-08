@@ -8,10 +8,16 @@ Share plugin interface for bugucms plugin system
 
 #### 安装教程
 
+> linux with jenkins
 ```
 cd $WORKSPACE
 chmod +x install.sh
 ./install.sh
+```
+
+> window
+```
+./install.bat
 ```
 
 #### 使用说明
